@@ -1,4 +1,45 @@
 .App {
   text-align: center;
-  
+  .Nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5vh;
+    border-bottom: 2px solid #E0E0E0;
+    .search {
+      margin: 1rem;
+    }
+    button {
+      margin: 1rem;
+    }
+  }
+  .Metrics {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    margin: 15vh auto;
+    h3 {
+      font-size: 4.8rem;
+    }
+    .title-info {
+      margin: 1rem 0;
+      p {
+        font-size: 1.6rem;
+      }
+    }
+  }
+  .metrics-sub-container {
+    height: 30vh;
+    border: 2px solid black;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 2rem;
+    p {
+      height: 50%;
+      align-self: center;
+      justify-self: center;
+    }
+  }
 }
