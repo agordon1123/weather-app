@@ -18,6 +18,7 @@ const App = () => {
       //       see if it gets wacky when you start to search
       getWeatherOnMount(zip, setData)
     } else {
+      // set to NYC if no saved preference
       let zip = '10001'
       getWeatherOnMount(zip, setData)
     }
