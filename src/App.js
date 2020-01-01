@@ -6,6 +6,7 @@ import { getWeatherOnMount } from './utils';
 const App = () => {
   const [location, setLocation] = useState({ zip: "" });
   const [data, setData] = useState(false);
+  console.log(data);
 
   // TODO: initialize isLoading state
   // fetch data on mount and render metrics component
@@ -26,7 +27,7 @@ const App = () => {
 
   return (
     <div className="App">
-        <Nav setLocation={setLocation} zip={location.zip} setData={setData} />
+        {/* <Nav setLocation={setLocation} zip={location.zip} setData={setData} /> */}
         
         {data && (
             <Metrics props={data} />
