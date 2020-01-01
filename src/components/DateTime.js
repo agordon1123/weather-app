@@ -4,36 +4,29 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 
 const DateTime = props => {
-    console.log(props);
-    const [state, setState] = useState({ timeStamp: new Date().getTime() / 1000 })
-    console.log(state.timeStamp)
+    const [state, setState] = useState({ time: new Date() });
     
     const tick = () => {
-        setState({ timeStamp: new Date().getTime() / 1000 });
+        setState({ time: new Date() });
     };
 
-    // const day = state.date.
-    // WHAT IF I CREATE A NEW DATE OBJECT THAT I CAN USE getDay() etc AND THEN CREATE A NEW
-    // LOCALE TIME STRING AND COMPARE THE HOURS... IF 
-
-    // TODO: may be including this in the clock component because "Date" is a javscript keyword
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
     useEffect(() => {
-        // TODO: call on mount and use setTimeout to call the setInterval fn 
-        // based on num of milliseconds in first time
-        setInterval(() => tick(), 60000);
+        // updates time at top of minute and starts interval to update every minute
+        const ms = 1000 - state.time.getMilliseconds();
+        const seconds = 60 - state.time.getSeconds();
+        let offset = ms + (seconds * 1000);
+        setTimeout(() => tick(), offset);
+        setTimeout(() => setInterval(() => tick(), 60000), offset);
     }, []);
 
     return (
         <div className='Date'>
             <Moment unix tz={handleTimeZone(props.timezone)} format='hh:mm'>
-                {state.timeStamp}
+                {state.time.getTime() / 1000}
             </Moment>
             -
-            <Moment unix tz={handleTimeZone(props.timezone)} format={`dddd, D MMM 'YY`} >
-                {state.timeStamp}
+            <Moment unix tz={handleTimeZone(props.timezone)} format={`dddd, D MMM 'YY`}>
+                {state.time.getTime() / 1000}
             </Moment>
         </div>
     );
