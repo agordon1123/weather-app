@@ -6,6 +6,7 @@ import 'moment-timezone';
 const DateTime = props => {
     const [state, setState] = useState({ time: new Date() });
     
+    // TODO: Is this function necessary or can we directly just setState?
     const tick = () => {
         setState({ time: new Date() });
     };
@@ -17,7 +18,7 @@ const DateTime = props => {
         let offset = ms + (seconds * 1000);
         setTimeout(() => tick(), offset);
         setTimeout(() => setInterval(() => tick(), 60000), offset);
-    }, []);
+    }, [state.time]);
 
     return (
         <div className='Date'>

@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { handleChange } from '../utils/handleChange';
 import { handleSubmit } from '../utils/handleSubmit';
 
 const Search = props => {
-    console.log(props);
     return(
         <div className='Search'>
             <input onChange={e => handleChange(e, props.setLocation, 'zip')} placeholder='zipcode' className='search-input' />

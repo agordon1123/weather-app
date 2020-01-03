@@ -3,9 +3,9 @@ import axios from "axios";
 export const handleSubmit = (e, zip, setter, persist) => {
     e.preventDefault();
 
-    if (persist === true) {
-      localStorage.setItem('zipcode', zip)
-    }
+    // if (persist === true) {
+    //   localStorage.setItem('zipcode', zip)
+    // }
 
     const APP_ID = process.env.REACT_APP_WEATHER_API_KEY;
     axios

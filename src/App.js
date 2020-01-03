@@ -24,14 +24,14 @@ const App = () => {
 
   return (
     <div className="App">        
-        {data && (
-            <Metrics 
-              setData={setData} 
-              data={data} 
-              setLocation={setLocation} 
-              location={location} 
-            />
-        )}
+      {data && (
+        <Metrics 
+          setData={setData} 
+          data={data} 
+          setLocation={setLocation} 
+          location={location} 
+        />
+      )}
     </div>
   );
 };
