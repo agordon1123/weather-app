@@ -1,7 +1,7 @@
 import React from 'react';
-import DateTime from './DateTime';
+import { DateTime } from './DateTime';
 
-const MetricsOverview = props => {
+export const MetricsOverview = props => {
     const { data } = props;
 
     return (
@@ -20,5 +20,3 @@ const MetricsOverview = props => {
         </div>
     )
 };
-
-export default MetricsOverview;

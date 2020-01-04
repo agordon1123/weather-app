@@ -1,8 +1,7 @@
 import React from 'react';
-import { handleChange } from '../utils/handleChange';
-import { handleSearch } from '../utils/handleSearch';
+import { handleChange, handleSearch } from '../utils/search';
 
-const Search = props => {
+export const Search = props => {
     const { location, setLocation, data, setData, setCache } = props;
     
     return(
@@ -17,5 +16,3 @@ const Search = props => {
         </div>
     )
 };
-
-export default Search;

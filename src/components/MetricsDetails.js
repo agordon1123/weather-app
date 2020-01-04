@@ -2,7 +2,7 @@ import React from 'react';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
-const MetricsDetails = props => {
+export const MetricsDetails = props => {
     const { data } = props;
 
     return (
@@ -22,5 +22,3 @@ const MetricsDetails = props => {
         </div>
     )
 };
-
-export default MetricsDetails;

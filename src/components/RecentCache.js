@@ -1,7 +1,7 @@
 import React from 'react';
-import { handleClick } from '../utils/handleClick';
+import { handleClick } from '../utils/cache';
 
-const RecentCache = props => {
+export const RecentCache = props => {
     const { cache, setCache, data, setData } = props;
 
     return (
@@ -17,5 +17,3 @@ const RecentCache = props => {
         </div>
     )
 };
-
-export default RecentCache;

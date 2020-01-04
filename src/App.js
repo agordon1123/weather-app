@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Metrics from './components/Metrics';
-import { getWeatherOnMount } from './utils';
-import { getCacheOnMount } from "./utils/getCacheOnMount";
+import React, { useState, useEffect } from 'react';
+import { Search, MetricsOverview, MetricsDetails, RecentCache } from './components';
+import { getWeatherOnMount, getCacheOnMount } from './utils/app';
 
-// TODO: initialize isLoading state
 const App = () => {
   const [location, setLocation] = useState({ zip: '' });
   const [data, setData] = useState(false);
@@ -25,16 +23,19 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">        
+    <div className='App'>        
       {data && (
-        <Metrics 
-          data={data}
-          setData={setData}
-          setLocation={setLocation}
-          location={location}
-          setCache={setCache}
-          cache={cache}
-        />
+        <>
+          <div className='metrics-overview'>
+            <MetricsOverview data={data} />
+          </div>
+
+          <div className='metrics-details-container'>
+            <Search location={location} setLocation={setLocation} data={data} setData={setData} cache={cache} setCache={setCache} />
+            <RecentCache cache={cache} setCache={setCache} data={data} setData={setData} />
+            <MetricsDetails data={data} />
+          </div>
+        </>
       )}
     </div>
   );

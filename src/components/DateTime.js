@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { handleTimeZone } from '../utils/handleTimeZone';
+import { handleTimeZone } from '../utils/app';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
-const DateTime = props => {
+export const DateTime = props => {
     const [state, setState] = useState({ time: new Date() });
     
     // TODO: Is this function necessary or can we directly just setState?
@@ -32,5 +32,3 @@ const DateTime = props => {
         </div>
     );
 };
-
-export default DateTime;

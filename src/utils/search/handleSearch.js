@@ -1,5 +1,5 @@
 import axios from "axios";
-import { handleCache } from "./handleCache";
+import { handleCache } from "../cache/handleCache";
 
 export const handleSearch = (e, zip, setData, data, setCache) => {
   e.preventDefault();
