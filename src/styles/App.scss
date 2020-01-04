@@ -37,20 +37,22 @@
         .name-date-container {
           margin: 1rem;
           .cityName {
-            font-size: 2.4rem;
+            font-size: 3.2rem;
             color: white;
           }
           .Date {
             color: white;
+            font-size: 1.2rem;
           }
         }
         .condition-icon-container {
           .condition {
             margin: 0 1rem 1rem 1rem;
             color: white;
+            font-size: 1.2rem;
           }
           img {
-            width: 2.5rem;
+            width: 3.5rem;
           }
         }
       }
@@ -59,49 +61,59 @@
       background-color: darkgrey;
       opacity: .5;
       width: 35%;
-      .search-container {
-        height: 20%;
-        border: 2px solid red;
-        .Search {
+      .Search {
+        display: flex;
+        justify-content: space-between;
+        height: 5.5rem;
+        margin: 0 0 2rem 3rem;
+        .input-container {
+          width: 72%;
+          border-bottom: 2px solid lightgray;
           display: flex;
-          justify-content: space-between;
-          height: 3.5rem;
-          border-bottom: 2px solid black;
-          padding: 2rem;
-          position: relative;
-          button {
-            height: 3.5rem;
-            width: 3.5rem;
-            padding-left: inherit;
-            padding-right: inherit;
-            position: absolute;
-            top: 0;
-            right: 0;
+          .search-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1.2rem;
+            padding-top: 1.5rem;
           }
         }
-      }
-      .RecentCache {
-        height: 32%;
-        padding: 2rem;
-        text-align: left;
-        p {
-          display: table;
-          margin: 1rem 0;
+        button {
+          height: 5.5rem;
+          width: 5.5rem;
+          border: none;
           &:hover {
             cursor: pointer;
           }
         }
       }
-      .metrics-details {
-        height: 30%;
-        padding: 2rem;
+      .RecentCache {
+        height: 28%;
+        margin: 3rem 3rem 2rem 3rem;
+        text-align: left;
+        font-size: 1.2rem;
+        border-bottom: 2px solid lightgray;
+        p {
+          display: table;
+          margin: 2rem 0;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+      .MetricsDetails {
+        height: 42%;
+        margin: 3rem 3rem 2rem 3rem;
         display: flex;
         align-content: flex-start;
         flex-wrap: wrap;
-        border: 2px solid red;
+        border-bottom: 2px solid lightgray;
+        font-size: 1.2rem;
         .metric {
           width: 50%;
-          height: 2rem;
+          // height: 2.4rem;
+          margin: 1rem 0;
           &:nth-child(even) {
             text-align: left;
           }
@@ -113,7 +125,9 @@
         }
         .metric-header {
           width: 100%;
-          margin-bottom: 1rem;
+          margin-bottom: 1.5rem;
+          color: white;
+          font-weight: 600;
         }
       }
     }

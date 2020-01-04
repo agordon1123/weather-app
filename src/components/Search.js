@@ -7,7 +7,10 @@ const Search = props => {
     
     return(
         <div className='Search'>
-            <input onChange={e => handleChange(e, setLocation, 'zip')} placeholder='zipcode' className='search-input' />
+            <div className='input-container'>
+                <input onChange={e => handleChange(e, setLocation, 'zip')} placeholder='zipcode' className='search-input' />
+            </div>
+
             <button onClick={e => handleSearch(e, location.zip, setData, data, setCache)} type="submit">
                 Go
             </button>
