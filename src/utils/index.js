@@ -1,3 +1,3 @@
 export { getWeatherOnMount } from "./getWeatherOnMount";
-export { handleSubmit } from './handleSubmit';
+export { handleSearch } from './handleSearch';
 export { handleChange } from './handleChange';

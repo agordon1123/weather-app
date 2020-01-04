@@ -1,6 +1,7 @@
 import React from 'react';
 import DateTime from './DateTime';
 import Search from './Search';
+import RecentCache from './RecentCache';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
@@ -8,8 +9,8 @@ import 'moment-timezone';
 // TODO: break up into individual components
 // TODO: remove div around components and correct stylesheet
 const Metrics = props => {
-    const { setData, data, setLocation, location } = props;
-    console.log(data);
+    const { setData, data, setLocation, location, setCache, cache } = props;
+    
     return (
         <div className='Metrics'>
             <div className='metrics-overview'>
@@ -22,7 +23,7 @@ const Metrics = props => {
                     </div>
 
                     <div className='condition-icon-container'>
-                        <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} />
+                        <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt='weather-icon' />
                         <p className='condition'>{data.weather[0].main}</p>
                         {/* <i class="fas fa-bolt"></i> */}
                     </div>
@@ -32,12 +33,10 @@ const Metrics = props => {
             <div className='metrics-details-container'>
                 {/* <p>{props.weather[0].description}</p> */}
                 <div className='search-container'>
-                    <Search location={location} setLocation={setLocation} setData={setData} />
+                    <Search location={location} setLocation={setLocation} data={data} setData={setData} cache={cache} setCache={setCache} />
                 </div>
 
-                <div className='recent-searches'>
-                    recent-search
-                </div>
+                <RecentCache cache={cache} setCache={setCache} data={data} setData={setData} />
 
                 <div className='metrics-details'>
                     <p className='metric metric-header' style={{ textAlign: 'left' }}>Weather Details</p>

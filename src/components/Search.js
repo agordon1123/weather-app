@@ -1,12 +1,14 @@
 import React from 'react';
 import { handleChange } from '../utils/handleChange';
-import { handleSubmit } from '../utils/handleSubmit';
+import { handleSearch } from '../utils/handleSearch';
 
 const Search = props => {
+    const { location, setLocation, data, setData, setCache } = props;
+    
     return(
         <div className='Search'>
-            <input onChange={e => handleChange(e, props.setLocation, 'zip')} placeholder='zipcode' className='search-input' />
-            <button onClick={e => handleSubmit(e, props.location.zip, props.setData, false)} type="submit">
+            <input onChange={e => handleChange(e, setLocation, 'zip')} placeholder='zipcode' className='search-input' />
+            <button onClick={e => handleSearch(e, location.zip, setData, data, setCache)} type="submit">
                 Go
             </button>
         </div>
