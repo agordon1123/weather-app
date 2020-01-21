@@ -7,6 +7,7 @@ export const getWeatherOnMount = (zip, setter) => {
     .get(`http://api.openweathermap.org/data/2.5/weather?zip=${zip}&APPID=${APP_ID}&units=imperial`)
       .then(succ => {
         succ.data.zip = zip;
+        // TODO: handleBackground once receive weather
         return setter(succ.data)
       })
       .catch(err => {
