@@ -1,5 +1,6 @@
 .metrics-details-container {
     background-color: darkgrey;
+    background-size: cover;
     opacity: .5;
     width: 35%;
     .Search {
@@ -12,6 +13,7 @@
         border-bottom: 2px solid lightgray;
         display: flex;
         .search-input {
+          color: white;
           width: 100%;
           background: transparent;
           border: none;
@@ -31,6 +33,7 @@
       }
     }
     .RecentCache {
+      color: white;
       height: 28%;
       margin: 3rem 3rem 2rem 3rem;
       text-align: left;
@@ -45,6 +48,7 @@
       }
     }
     .MetricsDetails {
+      color: white;
       height: 42%;
       margin: 3rem 3rem 2rem 3rem;
       display: flex;

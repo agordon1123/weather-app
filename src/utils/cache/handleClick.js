@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-
 export const handleClick = (position, city, data, setData, setCache) => {
-    // position == position in queue
+    // position == position in queue - hardcoded
     
     const APP_ID = process.env.REACT_APP_WEATHER_API_KEY;
     axios
@@ -45,12 +44,12 @@ export const handleClick = (position, city, data, setData, setCache) => {
                 default:
                     return;
             }
-
+            localStorage.setItem('zipcode', city.zip);
+            localStorage.setItem('cache', JSON.stringify(cache));
             succ.data.zip = city.zip;
-            let a = localStorage.setItem('cache', JSON.stringify(cache));
-            let b = setData(succ.data);
-            let c = setCache(cache);
-            return a && b && c;
+            let a = setData(succ.data);
+            let b = setCache(cache);
+            return a && b;
         })
         .catch(err => {
             // TODO: set up an error state

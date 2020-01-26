@@ -1,3 +1,3 @@
-export { getWeatherOnMount } from "./getWeatherOnMount";
+export { getWeather } from "./getWeather";
 export { handleTimeZone } from './handleTimeZone';
-export { getCacheOnMount } from './getCacheOnMount';
+export { getCache } from './getCache';

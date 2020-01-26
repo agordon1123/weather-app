@@ -7,15 +7,16 @@ export const handleSearch = (e, zip, setData, data, setCache) => {
   const APP_ID = process.env.REACT_APP_WEATHER_API_KEY;
   axios
     .get(`http://api.openweathermap.org/data/2.5/weather?zip=${zip}&APPID=${APP_ID}&units=imperial`)
-    .then(succ => {
+    .then(res => {
+      localStorage.setItem('zipcode', zip);
       // pass zip into response object
-      succ.data.zip = zip;
+      res.data.zip = zip;
       let a = handleCache(data, setCache);
-      let b = setData(succ.data);
+      let b = setData(res.data);
       return a && b;
     })
     .catch(err => {
       // TODO: set up an error state
-      console.log(err)
+      console.log(err);
     });
 };
