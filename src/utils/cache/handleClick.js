@@ -5,7 +5,7 @@ export const handleClick = (position, city, data, setData, setCache) => {
     
     const APP_ID = process.env.REACT_APP_WEATHER_API_KEY;
     axios
-        .get(`http://api.openweathermap.org/data/2.5/weather?zip=${city.zip}&APPID=${APP_ID}&units=imperial`)
+        .get(`https://api.openweathermap.org/data/2.5/weather?zip=${city.zip}&APPID=${APP_ID}&units=imperial`)
         .then(succ => {
             // pass zip into response object
             let cache = JSON.parse(localStorage.getItem('cache'));

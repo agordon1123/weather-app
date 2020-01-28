@@ -6,7 +6,7 @@ export const handleSearch = (e, zip, setData, data, setCache) => {
 
   const APP_ID = process.env.REACT_APP_WEATHER_API_KEY;
   axios
-    .get(`http://api.openweathermap.org/data/2.5/weather?zip=${zip}&APPID=${APP_ID}&units=imperial`)
+    .get(`https://api.openweathermap.org/data/2.5/weather?zip=${zip}&APPID=${APP_ID}&units=imperial`)
     .then(res => {
       localStorage.setItem('zipcode', zip);
       // pass zip into response object
