@@ -6,7 +6,6 @@ import 'moment-timezone';
 export const DateTime = props => {
     const [state, setState] = useState({ time: new Date() });
     
-    // TODO: Is this function necessary or can we directly just setState?
     const tick = () => {
         setState({ time: new Date() });
     };
@@ -22,11 +21,11 @@ export const DateTime = props => {
 
     return (
         <div className='Date'>
-            <Moment unix tz={handleTimeZone(props.timezone)} format='hh:mm'>
+            <Moment unix tz={handleTimeZone(props.timezone, 'datetime')} format='hh:mm'>
                 {state.time.getTime() / 1000}
             </Moment>
             -
-            <Moment unix tz={handleTimeZone(props.timezone)} format={`dddd, D MMM 'YY`}>
+            <Moment unix tz={handleTimeZone(props.timezone, 'datetime')} format={`dddd, D MMM 'YY`}>
                 {state.time.getTime() / 1000}
             </Moment>
         </div>

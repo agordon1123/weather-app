@@ -1,5 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
+import { handleTimeZone } from '../utils/app';
 import 'moment-timezone';
 
 export const MetricsDetails = props => {
@@ -16,9 +17,9 @@ export const MetricsDetails = props => {
             <p className='metric'>Wind:</p>
             <p className='metric'>{data.wind.speed} mph</p>
             <p className='metric'>Sunrise:</p>
-            <Moment className='metric' unix format='hh:mm a'>{data.sys.sunrise}</Moment>
+            <Moment className='metric' unix tz={handleTimeZone(data.timezone, 'datetime')} format='hh:mm a'>{data.sys.sunrise}</Moment>
             <p className='metric'>Sunset:</p>
-            <Moment className='metric' unix format='hh:mm a'>{data.sys.sunset}</Moment>
+            <Moment className='metric' unix tz={handleTimeZone(data.timezone, 'datetime')} format='hh:mm a'>{data.sys.sunset}</Moment>
         </div>
     )
 };

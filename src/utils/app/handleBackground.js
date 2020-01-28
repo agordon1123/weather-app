@@ -1,21 +1,53 @@
+import { handleTimeZone } from './handleTimeZone';
 
-export const handleBackground = weather => {
+export const handleBackground = (weather, sunrise, sunset, timezone) => {
     // returns a status used to render background image
     weather = weather.toLowerCase();
 
+    let tz = handleTimeZone(timezone, 'background');
+    tz = tz * 60 * 60;
+    const unix = Date.now() / 1000 - tz;
+
+    const tzSunrise = sunrise - tz;
+    const tzSunset = sunset - tz;
+
     switch(weather) {
         case 'clear':
-            return 'clear-day';
+            if (tzSunrise < unix && unix < tzSunset) {
+                return 'clear-day';
+            } else {
+                return 'clear-night';
+            }
         case 'thunderstorm':
-            return 'thunderstorm-night';
+            if (tzSunrise < unix && unix < tzSunset) {
+                return 'thunderstorm-day';
+            } else {
+                return 'thunderstorm-night';
+            }
         case 'rain':
-            return 'rain-day';
+            if (tzSunrise < unix && unix < tzSunset) {
+                return 'rain-day';
+            } else {
+                return 'rain-night';
+            }
         case 'drizzle':
-            return 'rain-day';
+            if (tzSunrise < unix && unix < tzSunset) {
+                return 'rain-day';
+            } else {
+                return 'rain-night';
+            }
         case 'snow':
-            return 'snow-night';
+            if (tzSunrise < unix && unix < tzSunset) {
+                return 'snow-day';
+            } else {
+                return 'snow-night';
+            }
         case 'clouds':
-            return 'clouds-day';
+            if (tzSunrise < unix && unix < tzSunset) {
+                return 'clouds-day';
+            } else {
+                return 'clouds-night';
+            }
         default:
             return 'clear-day';
     }

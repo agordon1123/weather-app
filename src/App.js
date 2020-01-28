@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Search, MetricsOverview, MetricsDetails, RecentCache } from './components';
-import { getWeather, getCache } from './utils/app';
-import { handleBackground } from './utils/app/handleBackground';
+import { getWeather, getCache, handleBackground, handleOpacity } from './utils/app';
 import Loader from 'react-loader-spinner';
 
-// [ ] pass in time to do day vs night -> check datetime
 // [ ] create an error state
-// [ ] correct time on sunset, sunrise for other timezones
+// [ ] add updateWeather fn to run incrementally
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -14,6 +12,7 @@ const App = () => {
   const [data, setData] = useState(false);
   const [cache, setCache] = useState(false);
   const [background, setBackground] = useState('clear-day');
+  const [opacity, setOpacity] = useState(1.0);
   
   // fetch data and cache on mount
   useEffect(() => {
@@ -33,9 +32,12 @@ const App = () => {
   // update background with new weather 
   useEffect(() => {
     if (data) {
-      // update background image with new weather report
-      let condition = handleBackground(data.weather[0].main);
+      // update background image and opacity with new weather report
+      let condition = handleBackground(data.weather[0].main, data.sys.sunrise, data.sys.sunset, data.timezone);
       setBackground(condition);
+      
+      let opac = handleOpacity(data.timezone);
+      setOpacity(opac)
     }
     setTimeout(() => setLoading(false), 1500);
   }, [data]);
@@ -48,7 +50,7 @@ const App = () => {
             <MetricsOverview data={data}/>
           </div>
 
-          <div className='metrics-details-container' style={{ backgroundImage: 'url(' + require(`./assets/${background}.jpg`) + ')' }}>
+          <div className='metrics-details-container' style={{ opacity: opacity }}>
             <Search location={location} setLocation={setLocation} data={data} setData={setData} cache={cache} setCache={setCache} setLoading={setLoading} />
             <RecentCache cache={cache} setCache={setCache} data={data} setData={setData} setLoading={setLoading} />
             <MetricsDetails data={data} />
