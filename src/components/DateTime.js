@@ -1,14 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { handleTimeZone } from '../utils/app';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
 export const DateTime = props => {
     const [state, setState] = useState({ time: new Date() });
+    const isCurrent = useRef(true);
     
     const tick = () => {
-        setState({ time: new Date() });
+        if (isCurrent.current) {
+            setState({ time: new Date() });
+        }
     };
+
+    useEffect(() => {
+        return () => {
+            isCurrent.current = false;
+        }
+    }, []);
 
     useEffect(() => {
         // updates time at top of minute and starts interval to update every minute
