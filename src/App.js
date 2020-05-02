@@ -5,6 +5,8 @@ import Loader from 'react-loader-spinner';
 
 // [ ] create an error state
 // [ ] add updateWeather fn to run incrementally
+// [ ] create app context to avoid re-renders
+// [ ] re-style
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -13,7 +15,6 @@ const App = () => {
   const [cache, setCache] = useState(false);
   const [background, setBackground] = useState('clear-day');
   const [opacity, setOpacity] = useState(1.0);
-  
   // fetch data and cache on mount
   useEffect(() => {
     if (localStorage.getItem('zipcode')) {
@@ -33,6 +34,7 @@ const App = () => {
   useEffect(() => {
     if (data) {
       // update background image and opacity with new weather report
+      console.log(data.timezon);
       let condition = handleBackground(data.weather[0].main, data.sys.sunrise, data.sys.sunset, data.timezone);
       setBackground(condition);
       
@@ -40,7 +42,7 @@ const App = () => {
       setOpacity(opac)
     }
     setTimeout(() => setLoading(false), 1500);
-  }, [data]);
+  }, [data.weather]);
   
   return (
     <div className='App' style={loading ? { alignItems: 'center', justifyContent: 'center' } : null }>    
@@ -51,7 +53,15 @@ const App = () => {
           </div>
 
           <div className='metrics-details-container' style={{ opacity: opacity }}>
-            <Search location={location} setLocation={setLocation} data={data} setData={setData} cache={cache} setCache={setCache} setLoading={setLoading} />
+            <Search 
+              location={location} 
+              setLocation={setLocation} 
+              data={data} 
+              setData={setData} 
+              cache={cache} 
+              setCache={setCache} 
+              setLoading={setLoading} 
+            />
             <RecentCache cache={cache} setCache={setCache} data={data} setData={setData} setLoading={setLoading} />
             <MetricsDetails data={data} />
           </div>

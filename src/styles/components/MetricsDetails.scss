@@ -6,8 +6,8 @@
     .Search {
       display: flex;
       justify-content: space-between;
-      height: 5.5rem;
-      margin: 0 0 2rem 3rem;
+      height: 10%;
+      margin: 0 0 0 3rem;
       .input-container {
         width: 72%;
         border-bottom: 2px solid lightgray;
@@ -23,8 +23,8 @@
         }
       }
       button {
-        height: 5.5rem;
-        width: 5.5rem;
+        height: 100%;
+        width: 20%;
         border: none;
         outline: none;
         &:hover {
@@ -34,14 +34,26 @@
     }
     .RecentCache {
       color: white;
-      height: 28%;
-      margin: 3rem 3rem 2rem 3rem;
+      height: 25%;
       text-align: left;
-      font-size: 1.2rem;
+      font-size: calc(1rem + .25vw + .25vh);
+      padding: 5% 0;
+      margin: 0 3rem;
       border-bottom: 2px solid lightgray;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
       p {
-        display: table;
-        margin: 2rem 0;
+        display: flex;
+        align-items: center;
+        height: 25%;
+        // &:nth-child(1) {
+        //   height: 10%;
+        //   font-size: calc(.8rem + .25vw + .25vh);
+        //   &:hover {
+        //     cursor: default;
+        //   }
+        // }
         &:hover {
           cursor: pointer;
         }
@@ -49,8 +61,8 @@
     }
     .MetricsDetails {
       color: white;
-      height: 42%;
-      margin: 3rem 3rem 2rem 3rem;
+      height: calc((60% - 1rem ) - (.08vw + .08vh));
+      // margin: 3rem 3rem 2rem 3rem;
       display: flex;
       align-content: flex-start;
       flex-wrap: wrap;

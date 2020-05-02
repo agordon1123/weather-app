@@ -5,7 +5,7 @@ import 'moment-timezone';
 
 export const DateTime = props => {
     const [state, setState] = useState({ time: new Date() });
-    const isCurrent = useRef(true)
+    const isCurrent = useRef(true);
     
     const tick = () => {
         if (isCurrent.current) {

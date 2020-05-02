@@ -3,17 +3,15 @@ import { handleTimeZone } from './handleTimeZone';
 export const handleBackground = (weather, sunrise, sunset, timezone) => {
     // returns a status used to render background image
     weather = weather.toLowerCase();
-
     let tz = handleTimeZone(timezone, 'background');
     tz = tz * 60 * 60;
     const unix = Date.now() / 1000 - tz;
-
     const tzSunrise = sunrise - tz;
     const tzSunset = sunset - tz;
 
     switch(weather) {
         case 'clear':
-            if (tzSunrise < unix && unix < tzSunset) {
+            if (tzSunrise < unix < tzSunset) {
                 return 'clear-day';
             } else {
                 return 'clear-night';
@@ -43,7 +41,7 @@ export const handleBackground = (weather, sunrise, sunset, timezone) => {
                 return 'snow-night';
             }
         case 'clouds':
-            if (tzSunrise < unix && unix < tzSunset) {
+            if (tzSunrise < unix < tzSunset) {
                 return 'clouds-day';
             } else {
                 return 'clouds-night';
