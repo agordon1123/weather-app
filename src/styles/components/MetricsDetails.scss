@@ -12,14 +12,14 @@
         width: 72%;
         border-bottom: 2px solid lightgray;
         display: flex;
+        padding-top: 5.4%;
         .search-input {
           color: white;
           width: 100%;
           background: transparent;
           border: none;
           outline: none;
-          font-size: 1.2rem;
-          padding-top: 1.5rem;
+          font-size: calc(1rem + .25vw + .25vh);
         }
       }
       button {
@@ -47,13 +47,6 @@
         display: flex;
         align-items: center;
         height: 25%;
-        // &:nth-child(1) {
-        //   height: 10%;
-        //   font-size: calc(.8rem + .25vw + .25vh);
-        //   &:hover {
-        //     cursor: default;
-        //   }
-        // }
         &:hover {
           cursor: pointer;
         }
@@ -61,28 +54,46 @@
     }
     .MetricsDetails {
       color: white;
-      height: calc((60% - 1rem ) - (.08vw + .08vh));
-      // margin: 3rem 3rem 2rem 3rem;
+      height: calc((55% - 1rem) - (2.75vw + 2.75vh));
+      margin: 0 3rem;
+      padding: 5% 0;
       display: flex;
       align-content: flex-start;
       flex-wrap: wrap;
       border-bottom: 2px solid lightgray;
       font-size: 1.2rem;
-      .metric {
-        width: 50%;
-        margin: 1rem 0;
-        &:nth-child(even) {
-          text-align: left;
-        }
-        &:nth-child(odd) {
-          text-align: right;
-          color: white;
-          font-weight: 600;
+      .metric-container {
+        width: 100%;
+        height: 85%;
+        padding: 5% 0;
+        font-size: calc(1rem + .25vw + .25vh);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        div {
+          width: 100%;
+          height: 20%;
+          display: flex;
+          .metric {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            // margin: 1rem 0;
+            &:nth-child(even) {
+              text-align: right;
+              display: flex;
+              justify-content: flex-end;
+            }
+            &:nth-child(odd) {
+              text-align: left;
+              color: white;
+              font-weight: 600;
+            }
+          }
         }
       }
       .metric-header {
         width: 100%;
-        margin-bottom: 1.5rem;
         color: white;
         font-weight: 600;
       }

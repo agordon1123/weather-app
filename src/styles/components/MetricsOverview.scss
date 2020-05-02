@@ -22,17 +22,17 @@
         }
         .Date {
             color: white;
-            font-size: 1.2rem;
+            font-size: calc(1rem + .25vw + .25vh);
         }
         }
         .condition-icon-container {
         .condition {
             margin: 0 1rem 1rem 1rem;
             color: white;
-            font-size: 1.2rem;
+            font-size: calc(1rem + .25vw + .25vh);
         }
         img {
-            width: 3.5rem;
+            width: 4.5rem;
         }
         }
     }

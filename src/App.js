@@ -6,26 +6,24 @@ import Loader from 'react-loader-spinner';
 // [ ] create an error state
 // [ ] add updateWeather fn to run incrementally
 // [ ] create app context to avoid re-renders
-// [ ] re-style
+// [X] re-style
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [location, setLocation] = useState({ zip: '' });
-  const [data, setData] = useState(false);
-  const [cache, setCache] = useState(false);
+  const [data, setData] = useState({});
+  const [cache, setCache] = useState({});
   const [background, setBackground] = useState('clear-day');
   const [opacity, setOpacity] = useState(1.0);
+  
   // fetch data and cache on mount
   useEffect(() => {
-    if (localStorage.getItem('zipcode')) {
-      let zip = localStorage.getItem('zipcode');
-      setLocation({ zip: zip });
-      getWeather(zip, setData);
-    } else {
-      // set to NYC if no saved preference
-      let zip = '10001';
-      getWeather(zip, setData);
+    let zip = localStorage.getItem('zipcode');
+    if (!zip) {
+      zip = '10001';
     }
+    getWeather(zip, setData);
+    setLocation({ zip: zip });
     getCache(setCache);
     setTimeout(() => setLoading(false), 1500);
   }, []);
@@ -33,35 +31,24 @@ const App = () => {
   // update background with new weather 
   useEffect(() => {
     if (data) {
-      // update background image and opacity with new weather report
-      console.log(data.timezon);
-      let condition = handleBackground(data.weather[0].main, data.sys.sunrise, data.sys.sunset, data.timezone);
-      setBackground(condition);
-      
-      let opac = handleOpacity(data.timezone);
-      setOpacity(opac)
+      let background = handleBackground(data.weather[0].main, data.sys.sunrise, data.sys.sunset, data.timezone);
+      setBackground(background);
+      let opacity = handleOpacity(data.timezone);
+      setOpacity(opacity);
     }
     setTimeout(() => setLoading(false), 1500);
   }, [data.weather]);
   
   return (
     <div className='App' style={loading ? { alignItems: 'center', justifyContent: 'center' } : null }>    
-      {!loading && data && (
+      {!loading && Object.keys(data).length && (
         <>
           <div className='metrics-overview' style={{ backgroundImage: 'url(' + require(`./assets/${background}.jpg`) + ')' }}>
             <MetricsOverview data={data}/>
           </div>
 
           <div className='metrics-details-container' style={{ opacity: opacity }}>
-            <Search 
-              location={location} 
-              setLocation={setLocation} 
-              data={data} 
-              setData={setData} 
-              cache={cache} 
-              setCache={setCache} 
-              setLoading={setLoading} 
-            />
+            <Search location={location} setLocation={setLocation} data={data} setData={setData} cache={cache} setCache={setCache} setLoading={setLoading} />
             <RecentCache cache={cache} setCache={setCache} data={data} setData={setData} setLoading={setLoading} />
             <MetricsDetails data={data} />
           </div>

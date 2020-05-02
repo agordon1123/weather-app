@@ -11,7 +11,7 @@ export const handleBackground = (weather, sunrise, sunset, timezone) => {
 
     switch(weather) {
         case 'clear':
-            if (tzSunrise < unix < tzSunset) {
+            if (tzSunrise < unix && unix < tzSunset) {
                 return 'clear-day';
             } else {
                 return 'clear-night';
@@ -41,7 +41,7 @@ export const handleBackground = (weather, sunrise, sunset, timezone) => {
                 return 'snow-night';
             }
         case 'clouds':
-            if (tzSunrise < unix < tzSunset) {
+            if (tzSunrise < unix && unix < tzSunset) {
                 return 'clouds-day';
             } else {
                 return 'clouds-night';
