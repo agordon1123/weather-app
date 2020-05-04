@@ -1,8 +1,9 @@
 import React from 'react';
+import { useAppState } from '../AppContext';
 import { DateTime } from './DateTime';
 
-export const MetricsOverview = props => {
-    const { data } = props;
+export const MetricsOverview = () => {
+    const [{ data }, dispatch] = useAppState();
 
     return (
         <div className='metrics-overview-container'>
@@ -15,7 +16,6 @@ export const MetricsOverview = props => {
             <div className='condition-icon-container'>
                 <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt='weather-icon' />
                 <p className='condition'>{data.weather[0].main}</p>
-                {/* <i class="fas fa-bolt"></i> */}
             </div>
         </div>
     )

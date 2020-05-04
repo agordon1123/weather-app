@@ -1,10 +1,10 @@
 
-export const getCache = setCache => {
+export const getCache = () => {
     if (localStorage.getItem('cache')) {
         const cache = JSON.parse(localStorage.getItem('cache'));
         // insert into tail
         // remove from head
-        setCache(cache);
+        return cache;
     } else {
         // first visit
         const cache = {
@@ -27,6 +27,6 @@ export const getCache = setCache => {
         }
 
         localStorage.setItem('cache', JSON.stringify(cache));
-        setCache(cache);
+        return cache;
     }
 };

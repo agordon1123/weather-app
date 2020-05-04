@@ -1,3 +1,3 @@
 
-export { handleCache } from './handleCache';
-export { handleClick } from './handleClick';
+export { handleCacheRotate, handleCacheClick } from './handleCache';
+export { getCache } from './getCache';

@@ -2,5 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
 import App from './App';
+import { AppStateProvider } from './AppContext';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <AppStateProvider>
+        <App />
+    </AppStateProvider>, 
+    document.getElementById('root')
+);

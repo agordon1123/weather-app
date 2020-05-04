@@ -1,10 +1,11 @@
 import React from 'react';
-import Moment from 'react-moment';
+import { useAppState } from '../AppContext';
 import { handleTimeZone } from '../utils/app';
+import Moment from 'react-moment';
 import 'moment-timezone';
 
-export const MetricsDetails = props => {
-    const { data } = props;
+export const MetricsDetails = () => {
+    const [{ data }, dispatch] = useAppState();
 
     return (
         <div className='MetricsDetails'>
