@@ -57,7 +57,7 @@ const App = () => {
       {!loading && Object.keys(data).length && (
         <>
           <div className='metrics-overview' style={{ backgroundImage: 'url(' + require(`./assets/${background}.jpg`) + ')' }}>
-            <MetricsOverview data={data}/>
+            <MetricsOverview />
           </div>
 
           <div className='metrics-details-container' style={{ opacity: opacity }}>
@@ -68,16 +68,13 @@ const App = () => {
         </>
       )}
       {loading && (
-        // DO I NEED A FRAGMENT ?!? 
-        <>
-          <Loader
-            type='TailSpin'
-            color='#ededed'
-            height={100}
-            width={100}
-            timeout={3000}
-          />
-        </>
+        <Loader
+          type='TailSpin'
+          color='#ededed'
+          height={100}
+          width={100}
+          timeout={3000}
+        />
       )}
     </div>
   );

@@ -10,9 +10,7 @@ export const RecentCache = () => {
     const handleCacheClick = (position, city) => {
         axios
             .get(`${API_URL}zip=${city.zip}&APPID=${APP_ID}&units=imperial`)
-            .then(res => {
-                let cache = JSON.parse(localStorage.getItem('cache'));
-    
+            .then(res => { // rotates similarly to LRU cache
                 switch (position) {
                     case 1:
                         cache.tail = {
@@ -51,13 +49,10 @@ export const RecentCache = () => {
                 localStorage.setItem('cache', JSON.stringify(cache));
                 // pass zip into response object
                 res.data.zip = city.zip;
-                let a = dispatch({ type: 'SET_DATA', payload: res.data });
-                let b = dispatch({ type: 'SET_CACHE', payload: cache });
-                // DO I NEED RETURN??
-                return a && b;
+                dispatch({ type: 'SET_DATA', payload: res.data });
+                dispatch({ type: 'SET_CACHE', payload: cache });
             })
             .catch(err => {
-                // TODO: set up an error state
                 console.log(err);
             });
     }

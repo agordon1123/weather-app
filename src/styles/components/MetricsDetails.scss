@@ -6,7 +6,7 @@
     .Search {
       display: flex;
       justify-content: space-between;
-      height: 10%;
+      height: 7vh;
       margin: 0 0 0 3rem;
       .input-container {
         width: 72%;
@@ -24,9 +24,10 @@
       }
       button {
         height: 100%;
-        width: 20%;
+        width: 7vh;
         border: none;
         outline: none;
+        font-size: calc(.8rem + .25vw + .25vh);
         &:hover {
           cursor: pointer;
         }
@@ -34,10 +35,10 @@
     }
     .RecentCache {
       color: white;
-      height: 25%;
+      height: 17.4vh;
       text-align: left;
       font-size: calc(1rem + .25vw + .25vh);
-      padding: 5% 0;
+      padding: 2vh 0;
       margin: 0 3rem;
       border-bottom: 2px solid lightgray;
       display: flex;
@@ -54,22 +55,27 @@
     }
     .MetricsDetails {
       color: white;
-      height: calc((55% - 1rem) - (2.75vw + 2.75vh));
+      height: calc(38vh - .8rem);
       margin: 0 3rem;
-      padding: 5% 0;
+      padding: 2vh 0;
       display: flex;
       align-content: flex-start;
       flex-wrap: wrap;
-      border-bottom: 2px solid lightgray;
       font-size: 1.2rem;
+      .metric-header {
+        width: 100%;
+        color: lightgrey;
+        font-weight: 600;
+      }
       .metric-container {
         width: 100%;
-        height: 85%;
-        padding: 5% 0;
+        height: 78%;
+        padding: 2vh 0;
         font-size: calc(1rem + .25vw + .25vh);
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+        border-bottom: 2px solid lightgray;
         div {
           width: 100%;
           height: 20%;
@@ -78,7 +84,6 @@
             width: 50%;
             display: flex;
             align-items: center;
-            // margin: 1rem 0;
             &:nth-child(even) {
               text-align: right;
               display: flex;
@@ -91,11 +96,6 @@
             }
           }
         }
-      }
-      .metric-header {
-        width: 100%;
-        color: white;
-        font-weight: 600;
       }
     }
   }
